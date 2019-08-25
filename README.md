@@ -32,6 +32,7 @@ Things you may want to cover:
 ### Association
 - has_many :groups_users
 - has_many  :groups, throgh:  :groups_users
+- has_many :messages
 
 ## groupsテーブル
 |Column|Type|Options|
@@ -40,6 +41,7 @@ Things you may want to cover:
 ### Association
 - has_many :groups_users
 - has_many  :users, throgh:  :groups_users
+- has_many :messages
 
 ## groups_usersテーブル
 |Column|Type|Options|

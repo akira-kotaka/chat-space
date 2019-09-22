@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  def ndex
+  def index
   end
 
   def new
@@ -32,4 +32,5 @@ class GroupsController < ApplicationController
   def set_group
     @group = Group.find(params[:id])
   end
+
 end

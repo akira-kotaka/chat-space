@@ -1,44 +1,15 @@
 $(function () {
-  function buildmessageHTML(message) {
-    if (message.image) {
-      var html =
-        `<div class="message" data-message-id=${message.id}>
-        <div class="upper-message">
-          <div class="upper-message__user-name">
-            ${message.user_name}
-          </div>
-          <div class="upper-message__date">
-            ${message.date}
-          </div>
-        </div>
-        <div class="lower-message">
-          <p class="lower-message__content">
-            ${message.content}
-          </p>
-        </div>
-        <asset_path src=${message.image} >
-      </div>`
-      return html;
-    } else {
-      var html =
-        `<div class="message" data-message-id=${message.id}>
-        <div class="upper-message">
-          <div class="upper-message__user-name">
-            ${message.user_name}
-          </div>
-          <div class="upper-message__date">
-            ${message.date}
-          </div>
-        </div>
-        <div class="lower-message">
-          <p class="lower-message__content">
-            ${message.content}
-          </p>
-        </div>
-      </div>`
-      return html;
-    };
-  }
+  function buildHTML(message) {
+      var html = `<li class="chat__body__list">
+                  <span class="chat__body__list__user-name">${ message.user_name }</span>
+                  <span class="chat__body__list__creation-time">${ message.created_at }</span>
+                  <div class="chat__body__list__message">`
+                    + `<div class="chat__body__list__message__body">${message.body}</div>`
+                    + `${message.image_url ? `<img src="${message.image_url}">` : ``}`
+                  + `</div>
+                </li>`
+    return html;
+    }
   $('.js-form').on('submit', function (e) {
     e.preventDefault();
     var formData = new FormData(this);
@@ -54,7 +25,7 @@ $(function () {
     })
       .done(function (message) {
         console.log('OK');
-        var html = buildmessageHTML(message);
+        var html = buildHTML(message);
         $('.messages').append(html);
         $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight }, 'fast');
         $('.js-form')[0].reset();

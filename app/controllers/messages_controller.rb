@@ -1,12 +1,6 @@
 class MessagesController < ApplicationController
   before_action :set_group
 
-  if @message.save
-    redirect_to do |format|
-      format.html { redirect_to group_messages_path(@group), notice: 'メッセージが送信されました' }
-      format.json
-    end
-
   def index
     @message = Message.new
     @messages = @group.messages.includes(:user)

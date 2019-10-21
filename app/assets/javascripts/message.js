@@ -89,7 +89,7 @@ $(function () {
 
       .fail(function () {
         clearInterval(intervalChangeFlag.shift());
-        alert("メッセージの自動更新ができませんでした");
+        alert("error");
       })
     }
   }
